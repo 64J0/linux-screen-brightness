@@ -1,0 +1,30 @@
+#+TITLE: Linux terminal - Screen brightness changer
+#+AUTHOR: 64J0 <https://github.com/64J0>
+
+When working with multiple monitors, it's often hard to keep both brightness
+synced, which is annoying and probably bad for the eyes health (need to check
+this later).
+
+With this in mind, I decided to start exploring how to control the screen
+brightness through terminal on Linux. This repository holds what I found most
+effective to my case.
+
+** Script
+
+#+BEGIN_SRC bash :tangle screen-brightness.sh :tangle-mode (identity #o744)
+  #!/bin/bash
+  set -euo pipefail
+
+  # must be a float within 0.0 - 1.0 range
+  BRIGHTNESS_LEVEL="${1:-1.0}"
+
+  function main {
+      echo "Using BRIGHTNESS_LEVEL: ${BRIGHTNESS_LEVEL}..."
+      
+      xrandr --listmonitors |\
+          grep -E -o '\s\w+(-1)' |\
+          xargs -I '{}' xrandr --output '{}' --brightness "${BRIGHTNESS_LEVEL}"
+  }
+
+  main
+#+END_SRC
