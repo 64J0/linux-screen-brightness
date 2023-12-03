@@ -5,6 +5,11 @@ When working with multiple monitors, it's often hard to keep both brightness
 synced, which is annoying and probably bad for the eyes health (need to check
 this later).
 
+Some projects that aim to solve the same problem:
+
++ https://github.com/WinEunuuchs2Unix/eyesome
++ https://github.com/LordAmit/Brightness
+
 With this in mind, I decided to start exploring how to control the screen
 brightness through terminal on Linux. This repository holds what I found most
 effective to my case.
